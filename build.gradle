@@ -18,6 +18,14 @@ configurations {
     }
 }
 
+war {
+    enabled = false
+}
+
+bootWar {
+    archiveFileName = 'opemane.war'
+}
+
 repositories {
 	mavenCentral()
 }
