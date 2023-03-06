@@ -1,0 +1,27 @@
+calendar-contents {
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+}
+
+table {
+  border-collapse: collapse;
+  border: 2px solid #333;
+  padding: 0px 30px;
+  width: 500px;
+  background-color: whitesmoke;
+  list-style: outside;
+}
+
+thead {
+  background-color: peachpuff;
+}
+
+th {
+  border: 1px solid #333;
+}
+
+td {
+  padding: 5px;
+  border: 1px solid #333;
+}

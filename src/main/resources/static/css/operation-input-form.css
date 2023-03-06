@@ -1,0 +1,5 @@
+.tr-template {
+  /*JavaScriptでNodeを取りたいので、以下の方法で非表示にしています*/
+  visibility: hidden;
+  position: absolute;
+}

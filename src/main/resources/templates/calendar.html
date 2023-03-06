@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>カレンダー</title>
+	<link rel="stylesheet" href="../static/css/common.css" th:href="@{/css/common.css}">
+	<link rel="stylesheet" href="../static/css/calendar.css" th:href="@{/css/calendar.css}">
+</head>
+
+<body th:object="${calendarValue}">
+	<header th:replace="~{header :: contents}">
+		<h1>稼働管理</h1>
+		<ul>
+			<li><a href="project-list.html">プロジェクト一覧</a></li>
+			<li><a href="calendar.html">稼働一覧</a></li>
+			<li><a href="operation-input-form.html">新規稼働登録</a></li>
+		</ul>
+	</header>
+	<main>
+		<h1>稼働カレンダー</h1>
+		<div class="calendar-contents">
+
+			<h2 th:text="*{yearMonth}">2023-02</h2>
+			<table>
+				<thead>
+					<tr>
+						<th>月</th>
+						<th>火</th>
+						<th>水</th>
+						<th>木</th>
+						<th>金</th>
+						<th>土</th>
+						<th>日</th>
+						<th>週刊合計</th>
+					</tr>
+				</thead>
+				<tbody th:remove="all-but-first">
+					<tr th:each="week : *{weeks}" th:object="${week}">
+						<td>
+							<div class="calendar-cell">
+								<p class="day" th:text="*{monday} ?_:'-'">
+									<a href="operation-detail.html" th:if="*{monday}"
+										th:href="@{/operation-detail(targetDate=${calendarValue.yearMonth} + '-' + *{monday.date})}"
+										th:text="*{monday.date}">1</a>
+								</p>
+								<p class="number-of-operating-hours" th:text="*{monday} ?*{monday.hours}:'-'">-</p>
+							</div>
+						</td>
+						<td>
+							<div class="calendar-cell">
+								<p class="day" th:text="*{tuesday} ?_:'-'">
+									<a href="operation-detail.html" th:if="*{tuesday}"
+										th:href="@{/operation-detail(targetDate=${calendarValue.yearMonth} + '-' + *{tuesday.date})}"
+										th:text="*{tuesday.date}">2</a>
+								</p>
+								<p class="number-of-operating-hours" th:text="*{tuesday} ?*{tuesday.hours}:'-'">-</p>
+							</div>
+						</td>
+						<td>
+							<div class="calendar-cell">
+								<p class="day" th:text="*{wednesday} ?_:'-'">
+									<a href="operation-detail.html" th:if="*{wednesday}"
+										th:href="@{/operation-detail(targetDate=${calendarValue.yearMonth} + '-' + *{wednesday.date})}"
+										th:text="*{wednesday.date}">3</a>
+								</p>
+								<p class="number-of-operating-hours" th:text="*{wednesday} ?*{wednesday.hours}:'-'">7.5
+								</p>
+							</div>
+						</td>
+						<td>
+							<div class="calendar-cell">
+								<p class="day" th:text="*{thursday} ?_:'-'">
+									<a href="operation-detail.html" th:if="*{thursday}"
+										th:href="@{/operation-detail(targetDate=${calendarValue.yearMonth} + '-' + *{thursday.date})}"
+										th:text="*{thursday.date}">4</a>
+								</p>
+								<p class="number-of-operating-hours" th:text="*{thursday} ?*{thursday.hours}:'-'">7.5
+								</p>
+							</div>
+						</td>
+						<td>
+							<div class="calendar-cell">
+								<p class="day" th:text="*{friday} ?_:'-'">
+									<a href="operation-detail.html" th:if="*{friday}"
+										th:href="@{/operation-detail(targetDate=${calendarValue.yearMonth} + '-' + *{friday.date})}"
+										th:text="*{friday.date}">5</a>
+								</p>
+								<p class="number-of-operating-hours" th:text="*{friday} ?*{friday.hours}:'-'">7.5</p>
+							</div>
+						</td>
+						<td>
+							<div class="calendar-cell">
+								<p class="day" th:text="*{saturday} ?_:'-'">
+									<a href="operation-detail.html" th:if="*{saturday}"
+										th:href="@{/operation-detail(targetDate=${calendarValue.yearMonth} + '-' + *{saturday.date})}"
+										th:text="*{saturday.date}">6</a>
+								</p>
+								<p class="number-of-operating-hours" th:text="*{saturday} ?*{saturday.hours}:'-'">0.0
+								</p>
+							</div>
+						</td>
+						<td>
+							<div class="calendar-cell">
+								<p class="day" th:text="*{sunday} ?_:'-'">
+									<a href="operation-detail.html" th:if="*{sunday}"
+										th:href="@{/operation-detail(targetDate=${calendarValue.yearMonth} + '-' + *{sunday.date})}"
+										th:text="*{sunday.date}">7</a>
+								</p>
+								<p class="number-of-operating-hours" th:text="*{sunday} ?*{sunday.hours}:'-'">0.0</p>
+							</div>
+						</td>
+						<td>
+							<div class="calendar-cell">
+								<p class="weekly-total" th:text="*{totalHours()}">22.5</p>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="calendar-cell">
+								<p class="day"><a href="operation-detail.html">8</a></p>
+								<p class="number-of-operating-hours">7.5</p>
+							</div>
+						</td>
+						<td>
+							<div class="calendar-cell">
+								<p class="day"><a href="operation-detail.html">9</a></p>
+								<p class="number-of-operating-hours">7.5</p>
+							</div>
+						</td>
+						<td>
+							<div class="calendar-cell">
+								<p class="day"><a href="operation-detail.html">10</a></p>
+								<p class="number-of-operating-hours">7.5</p>
+							</div>
+						</td>
+						<td>
+							<div class="calendar-cell">
+								<p class="day"><a href="operation-detail.html">11</a></p>
+								<p class="number-of-operating-hours">7.5</p>
+							</div>
+						</td>
+						<td>
+							<div class="calendar-cell">
+								<p class="day"><a href="operation-detail.html">12</a></p>
+								<p class="number-of-operating-hours">7.5</p>
+							</div>
+						</td>
+						<td>
+							<div class="calendar-cell">
+								<p class="day"><a href="operation-detail.html">13</a></p>
+								<p class="number-of-operating-hours">0.0</p>
+							</div>
+						</td>
+						<td>
+							<div class="calendar-cell">
+								<p class="day"><a href="operation-detail.html">14</a></p>
+								<p class="number-of-operating-hours">0.0</p>
+							</div>
+						</td>
+						<td>
+							<div class="calendar-cell">
+								<p class="weekly-total">37.5</p>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="calendar-cell">
+								<p class="day"><a href="operation-detail.html">15</a></p>
+								<p class="number-of-operating-hours">7.5</p>
+							</div>
+						</td>
+						<td>
+							<div class="calendar-cell">
+								<p class="day"><a href="operation-detail.html">16</a></p>
+								<p class="number-of-operating-hours">7.5</p>
+							</div>
+						</td>
+						<td>
+							<div class="calendar-cell">
+								<p class="day"><a href="operation-detail.html">17</a></p>
+								<p class="number-of-operating-hours">7.5</p>
+							</div>
+						</td>
+						<td>
+							<div class="calendar-cell">
+								<p class="day"><a href="operation-detail.html">18</a></p>
+								<p class="number-of-operating-hours">7.5</p>
+							</div>
+						</td>
+						<td>
+							<div class="calendar-cell">
+								<p class="day"><a href="operation-detail.html">19</a></p>
+								<p class="number-of-operating-hours">7.5</p>
+							</div>
+						</td>
+						<td>
+							<div class="calendar-cell">
+								<p class="day"><a href="operation-detail.html">20</a></p>
+								<p class="number-of-operating-hours">0.0</p>
+							</div>
+						</td>
+						<td>
+							<div class="calendar-cell">
+								<p class="day"><a href="operation-detail.html">21</a></p>
+								<p class="number-of-operating-hours">0.0</p>
+							</div>
+						</td>
+						<td>
+							<div class="calendar-cell">
+								<p class="weekly-total">37.5</p>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="calendar-cell">
+								<p class="day"><a href="operation-detail.html">22</a></p>
+								<p class="number-of-operating-hours">7.5</p>
+							</div>
+						</td>
+						<td>
+							<div class="calendar-cell">
+								<p class="day"><a href="operation-detail.html">23</a></p>
+								<p class="number-of-operating-hours">7.5</p>
+							</div>
+						</td>
+						<td>
+							<div class="calendar-cell">
+								<p class="day"><a href="operation-detail.html">24</a></p>
+								<p class="number-of-operating-hours">7.5</p>
+							</div>
+						</td>
+						<td>
+							<div class="calendar-cell">
+								<p class="day"><a href="operation-detail.html">25</a></p>
+								<p class="number-of-operating-hours">0.0</p>
+							</div>
+						</td>
+						<td>
+							<div class="calendar-cell">
+								<p class="day"><a href="operation-detail.html">26</a></p>
+								<p class="number-of-operating-hours">7.5</p>
+							</div>
+						</td>
+						<td>
+							<div class="calendar-cell">
+								<p class="day"><a href="operation-detail.html">27</a></p>
+								<p class="number-of-operating-hours">0.0</p>
+							</div>
+						</td>
+						<td>
+							<div class="calendar-cell">
+								<p class="day"><a href="operation-detail.html">28</a></p>
+								<p class="number-of-operating-hours">0.0</p>
+							</div>
+						</td>
+						<td>
+							<div class="calendar-cell">
+								<p class="weekly-total">30.0</p>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="calendar-cell">
+								<p class="day"><a href="operation-detail.html">29</a></p>
+								<p class="number-of-operating-hours">7.5</p>
+							</div>
+						</td>
+						<td>
+							<div class="calendar-cell">
+								<p class="day"><a href="operation-detail.html">30</a></p>
+								<p class="number-of-operating-hours">7.5</p>
+							</div>
+						</td>
+						<td>
+							<div class="calendar-cell">
+								<p class="day"><a href="operation-detail.html">31</a></p>
+								<p class="number-of-operating-hours">7.5</p>
+							</div>
+						</td>
+						<td>
+							<div class="calendar-cell">
+								<p class="day">-</p>
+								<p class="number-of-operating-hours">-</p>
+							</div>
+						</td>
+						<td>
+							<div class="calendar-cell">
+								<p class="day">-</p>
+								<p class="number-of-operating-hours">-</p>
+							</div>
+						</td>
+						<td>
+							<div class="calendar-cell">
+								<p class="day">-</p>
+								<p class="number-of-operating-hours">-</p>
+							</div>
+						</td>
+						<td>
+							<div class="calendar-cell">
+								<p class="day">-</p>
+								<p class="number-of-operating-hours">-</p>
+							</div>
+						</td>
+						<td>
+							<div class="calendar-cell">
+								<p class="weekly-total">15.0</p>
+							</div>
+						</td>
+					</tr>
+
+				</tbody>
+			</table>
+		</div>
+	</main>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>プロジェクト一覧</title>
+	<link rel="stylesheet" href="../static/css/common.css" th:href="@{/css/common.css}">
+	<link rel="stylesheet" href="../static/css/project-list.css" th:href="@{/css/project-list.css}">
+</head>
+
+<body>
+	<header th:replace="~{header :: contents}">
+		<h1>稼働管理</h1>
+		<ul>
+			<li><a href="project-list.html">プロジェクト一覧</a></li>
+			<li><a href="calendar.html">稼働一覧</a></li>
+			<li><a href="operation-input-form.html">新規稼働登録</a></li>
+		</ul>
+	</header>
+	<main id="main-contents" class="show-progress">
+		<div class="progress">
+			<img src="../static/image/progress.gif" th:src="@{/image/progress.gif}">
+		</div>
+		<div class="main-contents">
+			<h1>プロジェクト一覧</h1>
+			<table id="subject-table">
+				<thead>
+					<tr>
+						<th scope="col">No.</th>
+						<th scope="col">作業プロジェクト名</th>
+						<th scope="col">プロジェクトコード</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+		</div>
+	</main>
+</body>
+<script src="../static/js/project-list.js" th:src="@{/js/project-list.js}"></script>
+<script th:inline="javascript">
+	const tableRef = document.getElementById('subject-table');
+	/*[+
+	const tableData = requestSubjectData();
+	+]*/
+	/*[- */
+	const tableData = {
+		subjects: [
+			{
+				name: "××対応",
+				code: "A0123456789"
+			},
+			{
+				name: "◎◎対応",
+				code: "A1123456789"
+			},
+			{
+				name: "▲▲対応",
+				code: "A1123456789"
+			}
+		]
+	};
+	/* -]*/
+	createTable(tableData, tableRef);
+	let mainContents = document.getElementById('main-contents');
+	mainContents.classList.remove('show-progress');
+	mainContents.classList.add('show-contents');
+</script>
+
+</html>

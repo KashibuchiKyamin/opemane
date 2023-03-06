@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>稼働詳細</title>
+  <link rel="stylesheet" href="../static/css/common.css">
+</head>
+
+<body>
+  <header>
+    <h1>稼働管理</h1>
+    <ul>
+      <li><a href="project-list.html">プロジェクト一覧</a></li>
+      <li><a href="calendar.html">稼働一覧</a></li>
+      <li><a href="operation-input-form.html">新規稼働登録</a></li>
+    </ul>
+  </header>
+  <main>
+
+    <h1>稼働詳細</h1>
+    <h2>稼働日: <span>2023-02-01</span></h2>
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">No.</th>
+          <th scope="col">作業プロジェクト名</th>
+          <th scope="col">作業時間(h)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>
+            ○○対応
+          </td>
+          <td>
+            3.0
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>
+            ○○対応
+          </td>
+          <td>
+            3.0
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>
+            ○○対応
+          </td>
+          <td>
+            3.0
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th scope="row" colspan="2">合計</th>
+          <td>9.0</td>
+        </tr>
+      </tfoot>
+    </table>
+    <a href="operation-input-form.html">稼働の編集</a>
+    <a href="calendar.html">稼働一覧へ戻る</a>
+  </main>
+</body>
+
+</html>

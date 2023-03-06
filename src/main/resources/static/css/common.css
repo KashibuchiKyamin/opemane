@@ -1,0 +1,39 @@
+body {
+	display: flex;
+	align-items: center;
+	flex-flow: column;
+	background-color: aliceblue;
+	margin: 0;
+}
+
+header {
+	padding: 0px 30px;
+	width: 500px;
+	background-color: aqua;
+}
+
+main {
+	padding: 30px;
+	width: 500px;
+	background-color: khaki;
+	position: relative;
+}
+
+.main-contents {
+	background-color: aquamarine;
+}
+
+.show-progress .main-contents {
+    visibility: hidden;
+	position: absolute;
+}
+
+.show-progress .progress {
+	text-align: center;
+	width: 500px;
+	background-color: aqua;
+}
+
+.show-contents .progress {
+	display: none;
+}

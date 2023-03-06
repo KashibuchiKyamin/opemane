@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>カレンダー</title>
+	<link rel="stylesheet" href="../static/css/common.css" th:href="@{/common.css}">
+	<link rel="stylesheet" href="../static/css/calendar.css" th:href="@{/calendar.css}">
+</head>
+
+<body>
+	<header th:fragment="contents">
+		<h1>稼働管理</h1>
+		<ul>
+			<li><a href="project-list.html" th:href="@{/project-list}">プロジェクト一覧</a></li>
+			<li><a href="calendar.html" th:href="@{/calendar}">稼働一覧</a></li>
+			<li><a href="operation-input-form.html" th:href="@{/operation-input-form}">新規稼働登録</a></li>
+		</ul>
+	</header>
+</body>
+
+</html>

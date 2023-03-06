@@ -1,0 +1,187 @@
+{
+  "uuid": "0cddf42f-2157-4dc2-ab1b-71c53c354b5b",
+  "lastMigration": 27,
+  "name": "Opemane(稼働管理システムの体裁で作ったモック)",
+  "endpointPrefix": "v1/opemane",
+  "latency": 0,
+  "port": 3001,
+  "hostname": "",
+  "folders": [],
+  "routes": [
+    {
+      "uuid": "bf781c9b-9193-46de-8064-f57b707f9c9d",
+      "type": "http",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "token",
+      "responses": [
+        {
+          "uuid": "059f0cdf-c13d-4786-bfe7-b80996c7cd33",
+          "body": "{\n  \"result\": \"success\",\n  \"token\":\"{{ faker 'random.alphaNumeric' 32 bannedChars='ghijklmnopqrstuvwxyz'}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "",
+              "value": "",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d0f169c5-3876-4268-8a1f-c4effa35b01d",
+      "type": "http",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "subject",
+      "responses": [
+        {
+          "uuid": "c4146b3e-ff50-4f12-aac8-bca600138644",
+          "body": "{\n  \"result\": \"success\",\n  \"key\": \"{{ faker 'random.alpha' 1}}{{ faker 'random.numeric' 15 allowLeadingZeros=true }}\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "案件情報取得キー発行",
+          "headers": [
+            {
+              "key": "",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c84ad397-b82f-4802-9029-29698334a321",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "subject/:key",
+      "responses": [
+        {
+          "uuid": "1c72b493-c92e-4573-9c9b-4e0490e24aa2",
+          "body": "{\n  \"result\": \"success\",\n  \"subjects\": [\n      {\n        \"name\": \"samurai - STEP2.5対応\",\n        \"code\": \"A0123456789\"\n      },\n      {\n        \"name\": \"gate - 新規開発\",\n        \"code\": \"A1123456789\"\n      },\n      {\n        \"name\": \"社内業務\",\n        \"code\": \"G2123456789\"\n      },\n      {\n        \"name\": \"ideon - 保守対応\",\n        \"code\": \"A3123456789\"\n      }\n    ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "案件情報取得",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "dd05bc2c-42d9-4d8d-8a24-1810131ddc09",
+      "type": "http",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "subject/operational-record",
+      "responses": [
+        {
+          "uuid": "dea2d46d-ffa2-43ee-8442-a393dfb2c229",
+          "body": "{\n  \"result\": \"success\",\n  \"info\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "rootChildren": [
+    {
+      "type": "route",
+      "uuid": "bf781c9b-9193-46de-8064-f57b707f9c9d"
+    },
+    {
+      "type": "route",
+      "uuid": "d0f169c5-3876-4268-8a1f-c4effa35b01d"
+    },
+    {
+      "type": "route",
+      "uuid": "c84ad397-b82f-4802-9029-29698334a321"
+    },
+    {
+      "type": "route",
+      "uuid": "dd05bc2c-42d9-4d8d-8a24-1810131ddc09"
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}
