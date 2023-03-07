@@ -1,0 +1,17 @@
+{"properties": [
+  {
+    "name": "opemane.api.accesstoken.url",
+    "type": "java.lang.String",
+    "description": "アクセストークン取得APIのURL"
+  },
+  {
+    "name": "opemane.api.accesstoken.id",
+    "type": "java.lang.String",
+    "description": "アクセストークン取得APIで使用するクライアントID"
+  },
+  {
+    "name": "opemane.api.accesstoken.key",
+    "type": "java.lang.String",
+    "description": "アクセストークン取得APIで使用するシークレットキー"
+  }
+]}
