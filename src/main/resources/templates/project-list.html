@@ -41,9 +41,8 @@
 </body>
 <script src="../static/js/project-list.js" th:src="@{/js/project-list.js}"></script>
 <script th:inline="javascript">
-	const tableRef = document.getElementById('subject-table');
 	/*[+
-	const tableData = requestSubjectData();
+	const tableData = requestSubjectData([[@{/project-list/data}]], createTable);
 	+]*/
 	/*[- */
 	const tableData = {
@@ -62,11 +61,8 @@
 			}
 		]
 	};
+	createTable(tableData);
 	/* -]*/
-	createTable(tableData, tableRef);
-	let mainContents = document.getElementById('main-contents');
-	mainContents.classList.remove('show-progress');
-	mainContents.classList.add('show-contents');
 </script>
 
 </html>

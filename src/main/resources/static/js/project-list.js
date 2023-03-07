@@ -2,37 +2,32 @@
  * プロジェクト一覧用js
  */
 
-const requestSubjectData = function() {
-	const tableData = {
-		subjects: [
-			{
-				name: "samurai - STEP2.5対応",
-				code: "A0123456789"
-			},
-			{
-				name: "gate - 新規開発",
-				code: "A1123456789"
-			},
-			{
-				name: "社内業務",
-				code: "G2123456789"
-			},
-			{
-				name: "ideon - 保守対応",
-				code: "A3123456789"
-			}
-		]
-	};
-	return tableData;
+/**
+ * のちのち共通化予定
+ * @param url - リクエスト先url文字列
+ * @param destFunction - レスポンスボディの連想配列を引数で受け取り処理をする関数
+ */
+function requestSubjectData(url, destFunction) {
+
+	fetch(url)
+		.then((response) => response.json())
+		.then((data) => {
+			console.log(data);
+			destFunction(data);
+		});
 }
 
 /**
- * @param subjectJson 案件情報のJSON
- * @param tableObject JSONを流し込む対象のHTMLTableElement
+ * 連想配列を元にテーブルを作成し、表示する
+ * @param subjectHashes 案件情報の連想配列
  */
-const createTable = function(subjectJson, tableObject) {
-	const subjects = subjectJson.subjects;
+const createTable = function createTable(subjectHashes) {
+	const subjects = subjectHashes.subjects;
 	let rowCount = 1;
+	console.log(subjectHashes);
+
+	const tableObject = document.getElementById('subject-table');
+
 	Object.keys(subjects).forEach(function(key) {
 		const row = tableObject.insertRow(-1);
 		const noCell = row.insertCell(0); // 0: No.列
@@ -42,4 +37,8 @@ const createTable = function(subjectJson, tableObject) {
 		const codeCell = row.insertCell(2); // 2: コード列
 		codeCell.appendChild(document.createTextNode(subjects[key].code))
 	});
+
+	const mainContents = document.getElementById('main-contents');
+	mainContents.classList.remove('show-progress');
+	mainContents.classList.add('show-contents');
 }
