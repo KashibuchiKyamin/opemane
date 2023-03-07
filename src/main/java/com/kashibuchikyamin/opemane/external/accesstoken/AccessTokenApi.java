@@ -33,11 +33,13 @@ public class AccessTokenApi {
 		this.config = config;
 	}
 
-	public AccessToken getAccessToken() {
+	public AccessTokenResponse getAccessToken() {
 		AccessTokenRequest requestBody = AccessTokenRequest.builder().crientId(config.getId())
 				.secretKey(config.getKey()).build();
-
-		this.webClient.post().uri(config.getUrl()).accept(MediaType.APPLICATION_JSON).bodyValue(requestBody).retrieve();
+		System.out.println("API");
+		this.webClient.post().uri(config.getUrl())
+				.accept(MediaType.APPLICATION_JSON).bodyValue(requestBody).retrieve()
+				.toEntity(AccessTokenResponse.class);
 		return null;
 	}
 }

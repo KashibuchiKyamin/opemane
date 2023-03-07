@@ -6,7 +6,7 @@ import lombok.Data;
  * アクセストークンのクラス。
  */
 @Data
-public class AccessToken {
+public class AccessTokenResponse {
 
 	/**
 	 * 結果

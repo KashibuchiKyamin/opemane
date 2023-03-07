@@ -11,12 +11,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import lombok.AllArgsConstructor;
 
 /**
- * プロジェクト一覧のクラス。
+ * プロジェクト一覧のコントローラクラス。
  */
 @RequestMapping("project-list")
 @Controller
 @AllArgsConstructor
 public class ProjectListController {
+
+	private ProjectListService projectListService;
+
 	/**
 	 * 初期表示をする。
 	 *
@@ -35,6 +38,7 @@ public class ProjectListController {
 	@GetMapping("data")
 	@ResponseBody
 	public ProjectList showProjectList() {
+		ProjectList result = projectListService.getProjectList();
 		List<ProjectList.Project> projectList = new ArrayList<>();
 		projectList.add(new ProjectList.Project("samurai - STEP2.5対応", "A0123456789"));
 		projectList.add(new ProjectList.Project("gate - 新規開発", "A1123456789"));
