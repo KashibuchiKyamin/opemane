@@ -1,4 +1,4 @@
-package com.kashibuchikyamin.opemane.config.constant;
+package com.kashibuchikyamin.opemane.config.properties;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
