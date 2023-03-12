@@ -1,9 +1,3 @@
-opemane:
-  api:
-    accesstoken:
-      id: hoge
-      key: fuga
-      url: http://localhost:3001/v1/opemane/token
 server:
   servlet:
     context-path: /opemane
@@ -15,3 +9,10 @@ spring:
     username: sa
   main:
     banner-mode: 'off'
+opemane:
+  api:
+    baseuri: http://localhost:3001/v1/opemane
+    accesstoken:
+      id: hoge
+      key: fuga
+      url: /token

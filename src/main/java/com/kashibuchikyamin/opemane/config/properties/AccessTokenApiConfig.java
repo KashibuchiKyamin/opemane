@@ -13,10 +13,6 @@ import lombok.Data;
 @Data
 public class AccessTokenApiConfig {
 	/**
-	 * APIのURL
-	 */
-	private String url;
-	/**
 	 * リクエストに使用するクライアントID
 	 */
 	private String id;

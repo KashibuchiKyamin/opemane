@@ -13,5 +13,10 @@
     "name": "opemane.api.accesstoken.key",
     "type": "java.lang.String",
     "description": "アクセストークン取得APIで使用するシークレットキー"
+  },
+  {
+    "name": "opemane.api.baseuri",
+    "type": "java.lang.String",
+    "description": "外部APIのベースURL"
   }
 ]}

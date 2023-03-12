@@ -1,13 +1,13 @@
 package com.kashibuchikyamin.opemane.external.accesstoken;
 
-import lombok.Builder;
-import lombok.Getter;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
 /**
  * アクセストークン取得APIのリクエストボディのクラス。
  */
-@Builder
-@Getter
+@Data
+@AllArgsConstructor
 public class AccessTokenRequest {
 	String crientId;
 	String secretKey;
