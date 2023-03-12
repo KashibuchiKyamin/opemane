@@ -49,7 +49,7 @@
       "type": "http",
       "documentation": "",
       "method": "post",
-      "endpoint": "subject",
+      "endpoint": "projects",
       "responses": [
         {
           "uuid": "c4146b3e-ff50-4f12-aac8-bca600138644",
@@ -82,11 +82,11 @@
       "type": "http",
       "documentation": "",
       "method": "get",
-      "endpoint": "subject/:key",
+      "endpoint": "projects/:key",
       "responses": [
         {
           "uuid": "1c72b493-c92e-4573-9c9b-4e0490e24aa2",
-          "body": "{\n  \"result\": \"success\",\n  \"subjects\": [\n      {\n        \"name\": \"samurai - STEP2.5対応\",\n        \"code\": \"A0123456789\"\n      },\n      {\n        \"name\": \"gate - 新規開発\",\n        \"code\": \"A1123456789\"\n      },\n      {\n        \"name\": \"社内業務\",\n        \"code\": \"G2123456789\"\n      },\n      {\n        \"name\": \"ideon - 保守対応\",\n        \"code\": \"A3123456789\"\n      }\n    ]\n}",
+          "body": "{\n  \"result\": \"success\",\n  \"projects\": [\n      {\n        \"name\": \"samurai - STEP2.5対応\",\n        \"code\": \"A0123456789\"\n      },\n      {\n        \"name\": \"gate - 新規開発\",\n        \"code\": \"A1123456789\"\n      },\n      {\n        \"name\": \"社内業務\",\n        \"code\": \"G2123456789\"\n      },\n      {\n        \"name\": \"ideon - 保守対応\",\n        \"code\": \"A3123456789\"\n      }\n    ]\n}",
           "latency": 0,
           "statusCode": 200,
           "label": "案件情報取得",
@@ -110,7 +110,7 @@
       "type": "http",
       "documentation": "",
       "method": "post",
-      "endpoint": "subject/operational-record",
+      "endpoint": "project/operational-record",
       "responses": [
         {
           "uuid": "dea2d46d-ffa2-43ee-8442-a393dfb2c229",

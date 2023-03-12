@@ -19,23 +19,23 @@ function requestSubjectData(url, destFunction) {
 
 /**
  * 連想配列を元にテーブルを作成し、表示する
- * @param subjectHashes 案件情報の連想配列
+ * @param projectHashes 案件情報の連想配列
  */
-const createTable = function createTable(subjectHashes) {
-	const subjects = subjectHashes.subjects;
+const createTable = function createTable(projectHashes) {
+	const projects = projectHashes.projects;
 	let rowCount = 1;
-	console.log(subjectHashes);
+	console.log(projectHashes);
 
-	const tableObject = document.getElementById('subject-table');
+	const tableObject = document.getElementById('project-table');
 
-	Object.keys(subjects).forEach(function(key) {
+	Object.keys(projects).forEach(function(key) {
 		const row = tableObject.insertRow(-1);
 		const noCell = row.insertCell(0); // 0: No.列
 		noCell.appendChild(document.createTextNode(rowCount++))
 		const subjectCell = row.insertCell(1); // 1: プロジェクト名列
-		subjectCell.appendChild(document.createTextNode(subjects[key].name))
+		subjectCell.appendChild(document.createTextNode(projects[key].name))
 		const codeCell = row.insertCell(2); // 2: コード列
-		codeCell.appendChild(document.createTextNode(subjects[key].code))
+		codeCell.appendChild(document.createTextNode(projects[key].code))
 	});
 
 	const mainContents = document.getElementById('main-contents');

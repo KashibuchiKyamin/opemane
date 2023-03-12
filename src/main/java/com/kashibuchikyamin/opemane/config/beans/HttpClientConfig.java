@@ -8,6 +8,7 @@ import org.springframework.web.reactive.function.client.support.WebClientAdapter
 import org.springframework.web.service.invoker.HttpServiceProxyFactory;
 
 import com.kashibuchikyamin.opemane.external.accesstoken.AccessTokenService;
+import com.kashibuchikyamin.opemane.external.projects.ProjectService;
 
 /**
  * API呼び出しに使用するBean定義のクラス。
@@ -27,11 +28,18 @@ public class HttpClientConfig {
 	}
 
 	@Bean
-	public AccessTokenService accessTokenService() {
+	AccessTokenService accessTokenService() {
 		HttpServiceProxyFactory proxyFactory = HttpServiceProxyFactory
 				.builder(WebClientAdapter.forClient(webClient))
 				.build();
 		return proxyFactory.createClient(AccessTokenService.class);
 	}
 
+	@Bean
+	ProjectService projectService() {
+		HttpServiceProxyFactory proxyFactory = HttpServiceProxyFactory
+				.builder(WebClientAdapter.forClient(webClient))
+				.build();
+		return proxyFactory.createClient(ProjectService.class);
+	}
 }

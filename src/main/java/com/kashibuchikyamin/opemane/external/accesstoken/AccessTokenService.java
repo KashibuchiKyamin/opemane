@@ -8,9 +8,15 @@ import org.springframework.web.service.annotation.PostExchange;
 /**
  * アクセストークン取得APIのインタフェース。
  */
-@HttpExchange(url = "/token")
+@HttpExchange("/token") // プロパティの値を使用できない(${}、#{}、#{${}}試したがNGでした)
 public interface AccessTokenService {
 
+	/**
+	 * アクセストークンの取得をする。
+	 *
+	 * @param requestBody
+	 * @return レスポンスボディ
+	 */
 	@PostExchange
 	ResponseEntity<AccessTokenResponse> getAccessToken(@RequestBody AccessTokenRequest requestBody);
 }
