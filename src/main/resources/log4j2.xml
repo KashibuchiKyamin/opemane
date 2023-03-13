@@ -19,12 +19,23 @@
 				<TimeBasedTriggeringPolicy />
 			</Policies>
 		</RollingFile>
+		<RollingFile name="RollingErrorFile"
+			fileName="./logs/opemane-error.log"
+			filePattern="./logs/$${date:yyyy-MM}/opemane-error-%d{-dd-MMMM-yyyy}-%i.log.gz">
+			<PatternLayout pattern="${loglayout}" />
+			<Policies>
+				<OnStartupTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="10 MB" />
+				<TimeBasedTriggeringPolicy />
+			</Policies>
+		</RollingFile>
 	</Appenders>
 
 	<Loggers>
 		<Root level="info">
 			<AppenderRef ref="Console" />
 			<AppenderRef ref="RollingFile" />
+			<AppenderRef level="error" ref="RollingErrorFile" />
 		</Root>
 	</Loggers>
 
