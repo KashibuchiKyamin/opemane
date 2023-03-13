@@ -2,7 +2,7 @@
 <!DOCTYPE xml>
 <Configuration>
 	<Properties>
-		<Property name="loglayout">%style{%d{ISO8601}}{black} %highlight{%-5level}[%style{%t}{bright,blue}] %style{%C{1.}}{bright,yellow}: trace-id:%x %msg%n%throwable</Property>
+		<Property name="loglayout">%d{ISO8601} %-5level[%t] %C{1.}: %x %msg%n%throwable</Property>
 	</Properties>
 	<Appenders>
 		<Console name="Console" target="SYSTEM_OUT">
