@@ -1,7 +1,5 @@
 package com.kashibuchikyamin.opemane.screen.projectlist;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -11,15 +9,16 @@ import com.kashibuchikyamin.opemane.external.accesstoken.AccessTokenResponse;
 import com.kashibuchikyamin.opemane.external.accesstoken.AccessTokenService;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 
 /**
  * プロジェクト一覧のサービスクラス。
  */
 @AllArgsConstructor
 @Service
+@Log4j2
 public class ProjectListService {
 
-	private final static Logger logger = LogManager.getLogger(ProjectListService.class);
 
 	private AccessTokenApiConfig tokenApiConfig;
 	private AccessTokenService accessTokenService;
@@ -31,9 +30,9 @@ public class ProjectListService {
 	 */
 	public ProjectList getProjectList() {
 		AccessTokenRequest request = new AccessTokenRequest(tokenApiConfig.getId(), tokenApiConfig.getKey());
-		logger.info("request: {}", request.toString());
+		log.info("request: {}", request.toString());
 		ResponseEntity<AccessTokenResponse> accessToken = accessTokenService.getAccessToken(request);
-		logger.info("response: {}", accessToken.toString());
+		log.info("response: {}", accessToken.toString());
 		return null;
 	}
 
