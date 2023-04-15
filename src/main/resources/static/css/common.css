@@ -8,16 +8,29 @@ body {
 
 header {
 	padding: 0px 30px;
-	width: 500px;
+	width: 1000px;
 	background-color: aqua;
 }
 
 main {
 	padding: 30px;
-	width: 500px;
+	width: 1000px;
 	background-color: khaki;
 	position: relative;
 }
+
+@media screen and (max-width: 1000px) {
+	header {
+		width: 100%;
+		min-width: 450px;
+	}
+	
+	main {
+		width: 100%;
+		min-width: 450px;
+	}
+}
+
 
 .main-contents {
 	background-color: aquamarine;
